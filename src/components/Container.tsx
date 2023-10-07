@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 
 interface IContainerProps {
-  children: ReactElement;
+  children: ReactElement[];
 }
 
 const Container: React.FC<IContainerProps> = ({ children }) => {
