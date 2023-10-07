@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
 			colors: {
-				'red-default': '#233333'
+				'red-dacompsi': '#990100',
+				'gray-dacompsi': '#333333'
 			}
 		},
   },
