@@ -4,7 +4,7 @@ import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 
 const Home = () => {
   return (
-    <Container>
+    <Container className="gap-10">
       <div className="h-60 bg-gray-500 flex items-center justify-between mx-10 text-white">
         <IconChevronLeft color="black" className="mx-10" />
         BANNER VAI AQUI
@@ -41,6 +41,17 @@ const Home = () => {
           <button className="rounded-full bg-red-dacompsi hover:bg-red-900 text-white w-[140px] py-1 self-center">
             SAIBA MAIS
           </button>
+        </div>
+      </div>
+
+      <div className="bg-gradient-to-b from-red-dacompsi to-dark-red-dacompsi h-[850px]">
+        <div className="flex flex-col gap-3 text-white px-16">
+          <span className="font-bold  text-[38px]">Conheça nossa gestão</span>
+          <span>
+            Esses são os membros dos Colegiados de Ciência da Computação e
+            Sistemas da Informação, isto é, a ponte entre os estudantes e os
+            docentes do DCC e ICEX.
+          </span>
         </div>
       </div>
     </Container>
