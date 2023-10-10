@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
-    <nav className="bg-red-dacompsi w-full flex items-center justify-between p-4 px-12">
+    <nav className="bg-red-dacompsi w-full flex items-center justify-between p-4 px-12 ">
       <div className="hover:cursor-pointer">
         <IconMenu2 color="black" size={"32px"} />
       </div>
