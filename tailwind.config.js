@@ -8,6 +8,7 @@ export default {
     extend: {
 			colors: {
 				'red-dacompsi': '#990100',
+				'dark-red-dacompsi': '#4B0000',
 				'gray-dacompsi': '#333333'
 			}
 		},
