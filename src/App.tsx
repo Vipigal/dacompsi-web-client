@@ -1,14 +1,13 @@
 import { Outlet } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="h-screen w-screen flex flex-col gap-5 items-center">
+    <div className="h-screen w-full flex flex-col gap-5 items-center ">
       <Navbar />
       <Outlet />
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Footer />
     </div>
   );
 }
