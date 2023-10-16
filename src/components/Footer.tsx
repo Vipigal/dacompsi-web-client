@@ -6,18 +6,31 @@ import {
   IconUsersGroup,
 } from "@tabler/icons-react";
 import { IconPhone } from "@tabler/icons-react";
+import dacompsi_logo_branca from "../assets/dacompsi_logo_branca.png";
 
 const Footer = () => {
   return (
     <div className="w-full h-max p-5 px-14 bg-dark-red-dacompsi text-white m-0 flex flex-col gap-5 ">
       <div className="flex justify-between">
         <div className="flex flex-col gap-2">
-          {/* <img src={logo_dacompsi} alt="" /> */}
+          <img src={dacompsi_logo_branca} alt="" />
           <span>Nos siga nas Redes Sociais!</span>
           <div className="flex justify-between">
-            <IconBrandTwitter className="cursor-pointer" color="white" />
-            <IconBrandInstagram className="cursor-pointer" color="white" />
-            <IconBrandYoutube className="cursor-pointer" color="white" />
+            <IconBrandTwitter
+              className="cursor-pointer"
+              color="white"
+              size={30}
+            />
+            <IconBrandInstagram
+              className="cursor-pointer"
+              color="white"
+              size={30}
+            />
+            <IconBrandYoutube
+              className="cursor-pointer"
+              color="white"
+              size={30}
+            />
           </div>
         </div>
 
@@ -25,7 +38,7 @@ const Footer = () => {
           Desenvolvido por alunos, para alunos.
         </span>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 mt-6">
           <span>Entre em contato:</span>
           <span className="flex gap-2">
             <IconMailFilled color="white" />
