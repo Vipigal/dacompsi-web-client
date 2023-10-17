@@ -3,8 +3,15 @@ import fotoSobreDa from "../assets/image_14.svg";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import AvatarBox from "../components/AvatarBox";
 import collaboration from "../assets/collaboration.svg";
+import { useMediaQuery } from "@mantine/hooks";
+import { em } from "@mantine/core";
+
+const COLLABORATION_PIC_RAZAO = 1.725;
+let collaboration_pic_height = 100;
 
 const Home = () => {
+  const mobile = useMediaQuery(`(max-width: ${em(750)})`);
+  collaboration_pic_height = mobile ? 100 : 250;
   return (
     <Container className="gap-10">
       <div className="h-60 bg-gray-500 flex items-center justify-between mx-10 text-white">
@@ -13,9 +20,9 @@ const Home = () => {
         <IconChevronRight color="black" className="mx-10" />
       </div>
 
-      <div className="mx-10 flex items-center justify-center gap-48">
-        <div className="flex flex-col gap-16 max-w-lg">
-          <span className="font-bold self-center text-[38px]">
+      <div className="mx-10 flex flex-col md:flex-row p-5 items-center justify-center gap-6 md:gap-48">
+        <div className="flex flex-col gap-16 max-w-lg ">
+          <span className="font-bold self-center text-[38px] text-center">
             O QUE É O D.A.?
           </span>
           <span>
@@ -27,7 +34,7 @@ const Home = () => {
             seus objetivos:
           </span>
           <ul className="list-disc flex flex-col gap-2">
-            <li className="">
+            <li>
               Representar os interesses do corpo discente (alunos) perante os
               órgãos do DCC (Colegiados e Câmara);
             </li>
@@ -46,18 +53,18 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="bg-gradient-to-b from-red-dacompsi to-dark-red-dacompsi h-[850px]">
-        <div className="flex flex-col gap-3 text-white px-16 ">
-          <span className="font-bold mt-6 text-[38px]">
+      <div className="bg-gradient-to-b from-red-dacompsi to-dark-red-dacompsi h-[800px]">
+        <div className="flex flex-col gap-5 text-white px-16 pt-10 justify-center items-center">
+          <span className="font-bold mt-6 md:text-[38px] text-2xl text-center">
             Conheça nossa gestão
           </span>
-          <span>
+          <span className="text-sm sm:text-base">
             Esses são os membros dos Colegiados de Ciência da Computação e
             Sistemas da Informação, isto é, a ponte entre os estudantes e os
             docentes do DCC e ICEX.
           </span>
 
-          <div className="grid grid-cols-3 gap-10 mt-16 self-center gap-x-20">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-10 md:mt-10 self-center gap-x-10 sm:gap-x-20">
             <AvatarBox name="Chorão" />
             <AvatarBox name="Black Alien" />
             <AvatarBox name="Marcos" />
@@ -68,12 +75,12 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="h-[550px] mx-40 flex justify-center gap-48">
-        <div className="flex flex-col gap-16 max-w-[558px]">
-          <span className="font-bold self-center text-[38px] min-w-max">
+      <div className="h-[550px] md:mx-40 p-10 flex flex-col md:flex-row justify-center md:gap-48 gap-12 items-center">
+        <div className="flex flex-col gap-16 max-w-[558px] items-center">
+          <span className="font-bold md:text-[38px] text-2xl text-center">
             Peça ajuda a um Representante
           </span>
-          <span>
+          <span className="w-[300px] md:min-w-[550px]">
             Ocorreu um problema com sua matrícula? Precisa de orientação para
             tomar uma decisão? Sem problema! Nós do DACompSI estamos aqui para
             te ajudar! Entre em contato com nossos representantes discentes o
@@ -85,7 +92,11 @@ const Home = () => {
             PEDIR AJUDA
           </button>
         </div>
-        <img src={collaboration} />
+        <img
+          src={collaboration}
+          width={collaboration_pic_height * COLLABORATION_PIC_RAZAO}
+          height={collaboration_pic_height}
+        />
       </div>
     </Container>
   );

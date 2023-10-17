@@ -16,7 +16,7 @@ export const Navbar = () => {
         alt="logo dacompsi"
         width={RAZAO_LOGO * LOGO_HEIGHT}
         height={LOGO_HEIGHT}
-        className="ml-20"
+        className="sm:ml-20"
       />
       <div className="flex gap-5">
         <Link to={"/sobre"} className="text-white hover:text-black">
