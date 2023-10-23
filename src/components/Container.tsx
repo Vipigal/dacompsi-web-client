@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface IContainerProps {
-  children: ReactElement[];
+  children: ReactElement[] | ReactElement;
   className?: string;
 }
 

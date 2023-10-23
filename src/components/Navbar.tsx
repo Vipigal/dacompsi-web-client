@@ -7,7 +7,7 @@ const LOGO_HEIGHT = 150;
 
 export const Navbar = () => {
   return (
-    <nav className="bg-red-dacompsi w-full flex items-center justify-between p-1 pb-1 pr-12 pl-6 h-full">
+    <nav className="bg-red-dacompsi w-full flex items-center justify-between p-1 pb-1 pr-12 pl-6 h-full max-h-[70px]">
       <img
         src={logo_dacompsi}
         alt="logo dacompsi"
@@ -17,7 +17,7 @@ export const Navbar = () => {
       />
       <div className="flex gap-10 justify-center items-center h-full">
         <a
-          href="#da"
+          href="/#da"
           className="h-full hover:border-b hover:border-b-white flex items-center justify-center"
         >
           <span className="text-black hover:text-white transition-all ease-in-out duration-300 hover:scale-105">
@@ -25,7 +25,7 @@ export const Navbar = () => {
           </span>
         </a>
         <a
-          href="#gestao"
+          href="/#gestao"
           className="h-full hover:border-b hover:border-b-white flex items-center justify-center"
         >
           <span className="text-black hover:text-white transition-all ease-in-out duration-300 hover:scale-105">
@@ -33,7 +33,7 @@ export const Navbar = () => {
           </span>
         </a>
         <a
-          href="#ajuda"
+          href="/#ajuda"
           className="h-full hover:border-b hover:border-b-white flex items-center justify-center"
         >
           <span className="text-black hover:text-white transition-all ease-in-out duration-300 hover:scale-105">

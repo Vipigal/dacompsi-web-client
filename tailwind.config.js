@@ -9,7 +9,8 @@ export default {
 			colors: {
 				'red-dacompsi': '#990100',
 				'dark-red-dacompsi': '#4B0000',
-				'gray-dacompsi': '#333333'
+				'gray-dacompsi': '#333333',
+				'gray-complementary': '#EEEEEE'
 			}
 		},
   },
