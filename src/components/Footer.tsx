@@ -11,9 +11,9 @@ import dacompsi_logo_branca from "../assets/dacompsi_logo_branca.png";
 const Footer = () => {
   return (
     <div className="w-full h-max p-5 px-14 bg-dark-red-dacompsi text-white m-0 flex flex-col gap-5 ">
-      <div className="flex justify-between">
+      <div className="flex flex-col gap-4 sm:gap-2 md:gap-0 sm:flex-row justify-between items-center">
         <div className="flex flex-col gap-2">
-          <img src={dacompsi_logo_branca} alt="" />
+          <img src={dacompsi_logo_branca} alt="logo dacompsi" />
           <span>Nos siga nas Redes Sociais!</span>
           <div className="flex justify-between">
             <IconBrandTwitter
@@ -34,7 +34,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <span className="flex items-center">
+        <span className="flex items-center text-center font-bold">
           Desenvolvido por alunos, para alunos.
         </span>
 
@@ -54,7 +54,8 @@ const Footer = () => {
           </span>
         </div>
       </div>
-      <div className="flex self-center max-w-[780px] text-center text-gray-500">
+
+      <div className="flex self-center max-w-[780px] text-center text-gray-500 text-xs sm:text-base">
         Todo o contéudo deste site é de responsabilidade única e exclusiva do
         DAcompsci. Nenhum outro corpo discente se responsabiliza ou guarda
         relação direta ccom qualquer contúdo aqui presente.
