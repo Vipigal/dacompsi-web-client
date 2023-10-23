@@ -20,7 +20,10 @@ const Home = () => {
         <IconChevronRight color="black" className="mx-10" />
       </div>
 
-      <div className="mx-10 flex flex-col md:flex-row p-5 items-center justify-center gap-6 md:gap-48">
+      <div
+        className="mx-10 flex flex-col md:flex-row p-5 items-center justify-center gap-6 md:gap-48"
+        id="da"
+      >
         <div className="flex flex-col gap-16 max-w-lg ">
           <span className="font-bold self-center text-[38px] text-center">
             O QUE É O D.A.?
@@ -53,7 +56,10 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="bg-gradient-to-b from-red-dacompsi to-dark-red-dacompsi h-[800px]">
+      <div
+        className="bg-gradient-to-b from-red-dacompsi to-dark-red-dacompsi h-[800px]"
+        id="gestao"
+      >
         <div className="flex flex-col gap-5 text-white px-16 pt-10 justify-center items-center">
           <span className="font-bold mt-6 md:text-[38px] text-2xl text-center">
             Conheça nossa gestão
@@ -75,7 +81,10 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="h-[550px] md:mx-40 p-10 flex flex-col md:flex-row justify-center md:gap-48 gap-12 items-center">
+      <div
+        className="h-[550px] md:mx-40 p-10 flex flex-col md:flex-row justify-center md:gap-48 gap-12 items-center"
+        id="ajuda"
+      >
         <div className="flex flex-col gap-16 max-w-[558px] items-center">
           <span className="font-bold md:text-[38px] text-2xl text-center">
             Peça ajuda a um Representante

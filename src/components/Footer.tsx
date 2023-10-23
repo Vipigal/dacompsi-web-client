@@ -7,12 +7,8 @@ import {
 } from "@tabler/icons-react";
 import { IconPhone } from "@tabler/icons-react";
 import dacompsi_logo_branca from "../assets/dacompsi_logo_branca.png";
-import { em } from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
 
 const Footer = () => {
-  const mobile = useMediaQuery(`(max-width: ${em(750)})`);
-
   return (
     <div className="w-full h-max p-5 px-14 bg-dark-red-dacompsi text-white m-0 flex flex-col gap-5 ">
       <div className="flex flex-col gap-4 sm:gap-2 md:gap-0 sm:flex-row justify-between items-center">
