@@ -1,6 +1,6 @@
 import Container from "../components/Container";
 import { LogoDacompsiSizes } from "../utils/LogoSizes";
-import logo_dacompsi from "../assets/dacompsi_logo_branca.png";
+import logo_dacompsi from "../assets/images/dacompsi_logo_branca.png";
 import { useEffect, useState } from "react";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 import { Link } from "react-router-dom";
