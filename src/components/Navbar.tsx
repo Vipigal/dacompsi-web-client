@@ -1,6 +1,9 @@
+import React, { useState, useEffect } from 'react';
 import { IconUserCircle } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
-import logo_dacompsi from "../assets/dacompsi_logo_branca.png";
+import { FaBars } from 'react-icons/fa';
+import logo_dacompsi from "../assets/images/dacompsi_logo_branca.png";
+import '../assets/css/menu.css';
 
 const RAZAO_LOGO = 0.565;
 const LOGO_HEIGHT = 150;

@@ -1,8 +1,8 @@
-import { ReactElement } from "react";
+import React, { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface IContainerProps {
-  children: ReactElement[] | ReactElement;
+  children: ReactNode;  
   className?: string;
 }
 
