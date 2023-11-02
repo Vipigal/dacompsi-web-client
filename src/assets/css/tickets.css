@@ -1,0 +1,7 @@
+.cell-spacing td {
+    padding-bottom: 5px;
+}
+.table-spacing {
+    border-collapse: separate;
+    border-spacing: 0 10px; 
+}

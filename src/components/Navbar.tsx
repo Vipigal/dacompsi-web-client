@@ -36,7 +36,7 @@ export const Navbar = () => {
 
         <nav className="bg-red-dacompsi w-full flex items-center justify-between p-3 pb-3 pr-12 pl-12 h-full">
 
-            <button className="rounded-full bg-red-dacompsi hover:bg-red-900 text-white mt-4 py-2">
+            <button className="border-none rounded-full bg-red-dacompsi mt-4 py-1 px-1">
                 <FaBars
                     size={24}
                     onClick={toggleSidePanel}
