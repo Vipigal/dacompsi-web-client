@@ -2,8 +2,6 @@ import React from 'react';
 import Container from "../components/Container";
 import  "../assets/css/help.css";
 
-
-
 const Help = () => {
 
     return (

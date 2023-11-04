@@ -46,7 +46,7 @@ const Loja = () => {
         <aside className="w-1/4 px-4 py-6">
             <h2 className="font-bold mb-3">FILTRAR</h2>
             <div className="mb-4">
-            <div className="font-bold">Categories</div>
+            <div className="font-bold">Categorias</div>
             <div className="mt-2">
                 <a href="#" className="text-red-600 hover:underline">Camisas</a>
             </div>

@@ -83,7 +83,7 @@ export const Navbar = () => {
 
             <div className="flex gap-10 justify-end items-center h-full">
                 
-                <a href="#da" className="h-full hover:border-b hover:border-b-white flex items-center justify-center">
+                <a href="/home#da" className="h-full hover:border-b hover:border-b-white flex items-center justify-center">
                     <span className="text-black hover:text-white transition-all ease-in-out duration-300 hover:scale-105">
                         Sobre o D.A.
                     </span>
@@ -95,7 +95,7 @@ export const Navbar = () => {
                     </span>
                 </a>
 
-                <a href="#ajuda" className="h-full hover:border-b hover:border-b-white flex items-center justify-center">
+                <a href="/home#ajuda" className="h-full hover:border-b hover:border-b-white flex items-center justify-center">
                     <span className="text-black hover:text-white transition-all ease-in-out duration-300 hover:scale-105">
                         Peça Ajuda
                     </span>
@@ -117,13 +117,13 @@ export const Navbar = () => {
                     </Link>
                     <Link to="/eventos" onClick={toggleSidePanel}>
                         <div className='flex'><img src={home_draw} width={30} height={30} className='pr-2'></img>Eventos</div>
-                        </Link>
+                    </Link>
                     <Link to="/quemsomos" onClick={toggleSidePanel}>
                         <div className='flex'><img src={home_draw} width={30} height={30} className='pr-2'></img>Quem Somos</div>
-                        </Link>
+                    </Link>
                     <Link to="/gestao" onClick={toggleSidePanel}>
                         <div className='flex'><img src={home_draw} width={30} height={30} className='pr-2'></img>Gestão</div>
-                        </Link>
+                    </Link>
                     <Link to="/tickets" onClick={toggleSidePanel}>
                         <div className='flex'><img src={home_draw} width={30} height={30} className='pr-2'></img>Meus Tickets</div>
                     </Link>
