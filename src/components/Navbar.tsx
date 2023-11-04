@@ -17,6 +17,13 @@ export const Navbar = () => {
     };
 
     useEffect(() => {
+        
+        if (isSidePanelOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+
         const handleClosePanel = (e: MouseEvent) => {
             if (e.target instanceof Element) {
                 if (e.target.closest('.side-panel') || e.target.closest('.hamburger')) {
@@ -25,11 +32,15 @@ export const Navbar = () => {
             }
             setIsSidePanelOpen(false);
         };
+
         document.addEventListener('click', handleClosePanel);
+        
         return () => {
             document.removeEventListener('click', handleClosePanel);
+            document.body.style.overflow = '';
         };
-    }, []);
+        
+    }, [isSidePanelOpen]);
     
 
     return (
@@ -94,6 +105,8 @@ export const Navbar = () => {
                     <Link to="/gestao" onClick={toggleSidePanel}>Gestão</Link>
                     <Link to="/tickets" onClick={toggleSidePanel}>Tickets Representativos</Link>
                     <Link to="/lojas" onClick={toggleSidePanel}>Lojas</Link>
+                    <Link to="/muesingressos" onClick={toggleSidePanel}>Meus ingressos</Link>
+                    <Link to="/meuspedidos" onClick={toggleSidePanel}>Meus pedidos</Link>
                     </div>
                 </div>
             )}
