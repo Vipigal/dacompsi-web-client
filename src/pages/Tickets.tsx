@@ -5,8 +5,8 @@ import "../assets/css/tickets.css"
 
 const Tickets = () => {
   return (
+    
     <Container className="gap-10">
-
       
       <div className="mx-10 mt-10">
         <span className="text-xl font-bold">Meus Tickets</span>

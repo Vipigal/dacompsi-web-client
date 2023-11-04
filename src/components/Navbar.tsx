@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { IconUserCircle } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import { FaBars } from 'react-icons/fa';
 import logo_dacompsi from "../assets/images/dacompsi_logo_branca.png";
 import '../assets/css/menu.css';
+import home_draw from "../assets/images/home_draw.svg";
 
 const RAZAO_LOGO = 0.565;
 const LOGO_HEIGHT = 150;
@@ -16,38 +17,51 @@ export const Navbar = () => {
         setIsSidePanelOpen(!isSidePanelOpen);
     };
 
+    const navbarRef = useRef(null);
+
     useEffect(() => {
-        
+
+        const updateSidePanelTop = () => {
+            const sidePanel = document.querySelector('.side-panel-container');
+            if (navbarRef.current && sidePanel) {
+                const navbarBottomY = navbarRef.current.getBoundingClientRect().bottom;
+                sidePanel.style.top = `${navbarBottomY}px`;
+            }
+        };
+    
         if (isSidePanelOpen) {
+            updateSidePanelTop();
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = '';
         }
-
-        const handleClosePanel = (e: MouseEvent) => {
-            if (e.target instanceof Element) {
-                if (e.target.closest('.side-panel') || e.target.closest('.hamburger')) {
-                    return;
-                }
+    
+        const handleClosePanel = (e) => {
+            if (e.target.closest('.side-panel') || e.target.closest('.hamburger')) {
+                return;
             }
             setIsSidePanelOpen(false);
         };
-
+    
+        // Attach event listeners
+        window.addEventListener('resize', updateSidePanelTop);
         document.addEventListener('click', handleClosePanel);
-        
+    
+        // Clean up event listeners
         return () => {
+            window.removeEventListener('resize', updateSidePanelTop);
             document.removeEventListener('click', handleClosePanel);
             document.body.style.overflow = '';
         };
-        
-    }, [isSidePanelOpen]);
+    }, [isSidePanelOpen]); // Add other dependencies if necessary
+    
     
 
     return (
 
-        <nav className="bg-red-dacompsi w-full flex items-center justify-between p-3 pb-3 pr-12 pl-12 h-full">
+        <nav ref={navbarRef} className="bg-red-dacompsi w-full flex items-center justify-between p-3 pb-3 pr-12 pl-12 h-full">
 
-            <button className="border-none rounded-full bg-red-dacompsi mt-4 py-1 px-1">
+            <button className="border-none rounded-full bg-red-dacompsi py-1 px-1 self-center">
                 <FaBars
                     size={24}
                     onClick={toggleSidePanel}
@@ -62,11 +76,10 @@ export const Navbar = () => {
                         alt="logo dacompsi"
                         width={RAZAO_LOGO * LOGO_HEIGHT}
                         height={LOGO_HEIGHT}
-                        className="sm:ml-20"
+                        className="sm:ml-60"
                     />
                 </Link>
             </div>
-
 
             <div className="flex gap-10 justify-end items-center h-full">
                 
@@ -99,14 +112,30 @@ export const Navbar = () => {
             {isSidePanelOpen && (
                 <div className="side-panel-container">
                     <div className="side-panel">
-                    <Link to="/home" onClick={toggleSidePanel}>Home</Link>
-                    <Link to="/eventos" onClick={toggleSidePanel}>Eventos</Link>
-                    <Link to="/quemsomos" onClick={toggleSidePanel}>Quem Somos</Link>
-                    <Link to="/gestao" onClick={toggleSidePanel}>Gestão</Link>
-                    <Link to="/tickets" onClick={toggleSidePanel}>Tickets Representativos</Link>
-                    <Link to="/lojas" onClick={toggleSidePanel}>Lojas</Link>
-                    <Link to="/muesingressos" onClick={toggleSidePanel}>Meus ingressos</Link>
-                    <Link to="/meuspedidos" onClick={toggleSidePanel}>Meus pedidos</Link>
+                    <Link to="/home" onClick={toggleSidePanel}>
+                        <div className='flex'><img src={home_draw} width={30} height={30} className='pr-2'></img>Home</div>
+                    </Link>
+                    <Link to="/eventos" onClick={toggleSidePanel}>
+                        <div className='flex'><img src={home_draw} width={30} height={30} className='pr-2'></img>Eventos</div>
+                        </Link>
+                    <Link to="/quemsomos" onClick={toggleSidePanel}>
+                        <div className='flex'><img src={home_draw} width={30} height={30} className='pr-2'></img>Quem Somos</div>
+                        </Link>
+                    <Link to="/gestao" onClick={toggleSidePanel}>
+                        <div className='flex'><img src={home_draw} width={30} height={30} className='pr-2'></img>Gestão</div>
+                        </Link>
+                    <Link to="/tickets" onClick={toggleSidePanel}>
+                        <div className='flex'><img src={home_draw} width={30} height={30} className='pr-2'></img>Meus Tickets</div>
+                    </Link>
+                    <Link to="/help" onClick={toggleSidePanel}>
+                        <div className='flex'><img src={home_draw} width={30} height={30} className='pr-2'></img>Ajuda</div>
+                    </Link>
+                    <Link to="/loja" onClick={toggleSidePanel}>
+                        <div className='flex'><img src={home_draw} width={30} height={30} className='pr-2'></img>Loja</div>
+                        </Link>
+                    <Link to="/meuspedidos" onClick={toggleSidePanel}>
+                        <div className='flex'><img src={home_draw} width={30} height={30} className='pr-2'></img>Meus pedidos</div>
+                        </Link>
                     </div>
                 </div>
             )}

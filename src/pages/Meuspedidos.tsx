@@ -2,7 +2,7 @@ import React from 'react';
 import Container from "../components/Container";
 import ProductCard from "../components/ProductCard"; 
 
-const Meusprodutos = () => {
+const Meuspedidos = () => {
 
     // vetor de produtos comprados soh como exemplo visual msm
     const purchasedProducts = [
@@ -53,5 +53,5 @@ const Meusprodutos = () => {
 };
 
 
-export default Meusprodutos;
+export default Meuspedidos;
 

@@ -6,7 +6,10 @@ import Cadastro from "../pages/Cadastro.tsx";
 import Help from "../pages/Help.tsx";
 import Tickets from "../pages/Tickets.tsx";
 import Produto from "../pages/Produto.tsx";
-import Meusprodutos from "../pages/Meusprodutos.tsx";
+import Meuspedidos from "../pages/Meuspedidos.tsx";
+import Loja from "../pages/Loja.tsx";
+import Eventos from "../pages/Eventos.tsx";
+
 
 
 const router = createBrowserRouter([
@@ -35,9 +38,17 @@ const router = createBrowserRouter([
         element: <Produto />
       },
       {
-        path: "/meusprodutos",
-        element: <Meusprodutos />
+        path: "/meuspedidos",
+        element: <Meuspedidos />
       },
+      {
+        path: "/loja",
+        element: <Loja />
+      },
+      {
+        path: "/eventos",
+        element: <Eventos />
+      },            
     ],
   },
   {

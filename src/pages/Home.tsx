@@ -1,5 +1,6 @@
 import Container from "../components/Container";
 import fotoSobreDa from "../assets/images/image_14.svg";
+import bannerPicture from "../assets/images/banner.png";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import AvatarBox from "../components/AvatarBox";
 import collaboration from "../assets/images/collaboration.svg";
@@ -20,10 +21,11 @@ const Home = () => {
 
     <Container className="gap-10">
 
-      <div className="h-60 bg-gray-500 flex items-center justify-between mx-10 text-white">
-        <IconChevronLeft color="black" className="mx-10" />
-        BANNER VAI AQUI
-        <IconChevronRight color="black" className="mx-10" />
+      
+      <div className="h-60 bg-gray-500 relative mx-10 text-white">
+        <IconChevronLeft color="white" className="absolute left-0 top-1/2 transform -translate-y-1/2" />
+        <img src={bannerPicture} alt="banner" className="w-full h-full" />
+        <IconChevronRight color="white" className="absolute right-0 top-1/2 transform -translate-y-1/2" />
       </div>
 
       <div className="mx-10 flex flex-col md:flex-row p-5 items-center justify-center gap-6 md:gap-48" id="da" >
@@ -53,9 +55,11 @@ const Home = () => {
         </div>
         <div className="flex flex-col gap-4">
           <img src={fotoSobreDa} />
-          <button className="rounded-full bg-red-dacompsi hover:bg-red-900 text-white w-[140px] py-1 self-center">
-            SAIBA MAIS
-          </button>
+          <a className="flex flex-col gap-4" href="/quemsomos">
+            <button className="rounded-full bg-red-dacompsi hover:bg-red-900 text-white w-[140px] py-1 self-center">
+              SAIBA MAIS
+            </button>
+          </a>
         </div>
       </div>
 
