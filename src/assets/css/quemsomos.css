@@ -1,0 +1,23 @@
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+h1 {
+    color: #333; 
+}
+h2 {
+    color: #555;
+}
+p {
+    color: #666;
+}
+.text-lg {
+    color: #666;
+}  
+.text-2xl {
+    color: black;
+}
+section {
+    margin-bottom: 2rem;
+}
+  

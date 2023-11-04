@@ -1,0 +1,11 @@
+.event-card {
+    max-width: 240px; 
+}
+.event-card img {
+    height: 200px;
+}
+@media (min-width: 640px) {
+    .event-card img {
+        height: 240px;
+    }
+}

@@ -1,0 +1,8 @@
+.notResizeTextArea {
+    resize: none;
+}
+.textAreaTitles {
+    padding-top: 15px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
