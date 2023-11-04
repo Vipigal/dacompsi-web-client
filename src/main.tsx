@@ -6,6 +6,7 @@ import router from "./config/router";
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
+import { AuthProvider } from "./contexts/AuthContext";
 
 if (import.meta.env.PROD) {
   disableReactDevTools();
@@ -14,7 +15,9 @@ if (import.meta.env.PROD) {
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <MantineProvider>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </MantineProvider>
   </React.StrictMode>
 );
