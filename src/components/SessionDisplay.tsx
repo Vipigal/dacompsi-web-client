@@ -53,13 +53,13 @@ function SessionDisplay({ name }: ISessionDisplay) {
       <Menu.Dropdown>
         <Menu.Item
           leftSection={<IconUser color="black" />}
-          onClick={(e) => handleLogout(e)}
+          onClick={() => navigate("meuPerfil")}
         >
           <span>Meu Pefil</span>
         </Menu.Item>
         <Menu.Item
           leftSection={<IconLogout color="red" />}
-          onClick={() => navigate("meuPerfil")}
+          onClick={(e) => handleLogout(e)}
         >
           <span>Logout</span>
         </Menu.Item>
