@@ -10,11 +10,13 @@ import Meuspedidos from "../pages/Meuspedidos.tsx";
 import Loja from "../pages/Loja.tsx";
 import Eventos from "../pages/Eventos.tsx";
 import Quemsomos from "../pages/Quemsomos.tsx";
+import Error from "../pages/Error.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",

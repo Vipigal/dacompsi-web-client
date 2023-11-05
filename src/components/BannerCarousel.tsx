@@ -1,19 +1,24 @@
-import {Carousel} from '@mantine/carousel';
-import { ReactNode } from 'react';
+import { Carousel } from "@mantine/carousel";
+import { ReactNode } from "react";
 
-
-interface ICarouselProps{
-	children?: ReactNode;
+interface ICarouselProps {
+  children?: ReactNode;
+  className?: string;
 }
 
-const BannerCarousel = ({children}:ICarouselProps)=>{
+const BannerCarousel = ({ children, className }: ICarouselProps) => {
+  return (
+    <Carousel
+      withControls
+      withIndicators
+      height={240}
+      slideSize={"100%"}
+      slideGap={{ base: 0, sm: "md" }}
+      className={className}
+    >
+      {children}
+    </Carousel>
+  );
+};
 
-	return <Carousel withControls withIndicators height={240}  
-	slideSize={'100%'}
-	slideGap={{ base: 0, sm: 'md' }}>
-	{children}
-	</Carousel>
-
-}
-
-export default BannerCarousel
+export default BannerCarousel;
