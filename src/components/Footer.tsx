@@ -4,8 +4,10 @@ import {
     IconBrandYoutube,
     IconMailFilled,
     IconUsersGroup,
+    IconMail
 } from "@tabler/icons-react";
 import { IconPhone } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
 import dacompsi_logo_branca from "../assets/images/dacompsi_logo_branca.png";
 
 const Footer = () => {
@@ -17,21 +19,27 @@ const Footer = () => {
                 <img src={dacompsi_logo_branca} alt="logo dacompsi"/>
                 <span>Nos siga nas Redes Sociais!</span>
                 <div className="flex justify-between">
+                    <Link to="https://twitter.com/dacompsi">
                     <IconBrandTwitter
                     className="cursor-pointer"
                     color="white"
                     size={30}
                     />
+                    </Link>
+                    <Link to="https://www.instagram.com/dacompsi/">
                     <IconBrandInstagram
                     className="cursor-pointer"
                     color="white"
                     size={30}
                     />
-                    <IconBrandYoutube
+                    </Link>
+                    <Link to="mailto:dacompsi@dcc.ufmg.br">
+                    <IconMail
                     className="cursor-pointer"
                     color="white"
                     size={30}
                     />
+                    </Link>
                 </div>
                 </div>
 
