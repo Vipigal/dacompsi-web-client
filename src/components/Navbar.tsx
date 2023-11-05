@@ -5,11 +5,15 @@ import { FaBars } from 'react-icons/fa';
 import logo_dacompsi from "../assets/images/dacompsi_logo_branca.png";
 import '../assets/css/menu.css';
 import home_draw from "../assets/images/home_draw.svg";
+import SessionDisplay from './SessionDisplay';
+import { useAuth } from '../utils/useAuth';
 
 const RAZAO_LOGO = 0.565;
 const LOGO_HEIGHT = 150;
 
 export const Navbar = () => {
+
+		const auth = useAuth()
 
     const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
 
@@ -17,7 +21,7 @@ export const Navbar = () => {
         setIsSidePanelOpen(!isSidePanelOpen);
     };
 
-    const navbarRef = useRef(null);
+    const navbarRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
 
@@ -25,7 +29,7 @@ export const Navbar = () => {
             const sidePanel = document.querySelector('.side-panel-container');
             if (navbarRef.current && sidePanel) {
                 const navbarBottomY = navbarRef.current.getBoundingClientRect().bottom;
-                sidePanel.style.top = `${navbarBottomY}px`;
+                sidePanel.style.top = `${navbarBottomY}px`
             }
         };
     
@@ -36,7 +40,8 @@ export const Navbar = () => {
             document.body.style.overflow = '';
         }
     
-        const handleClosePanel = (e) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const handleClosePanel = (e: any) => {
             if (e.target.closest('.side-panel') || e.target.closest('.hamburger')) {
                 return;
             }
@@ -100,12 +105,14 @@ export const Navbar = () => {
                         Peça Ajuda
                     </span>
                 </a>
-                
-                <Link
-                    to={"/login"}
-                    className="h-full flex items-center justify-center hover:scale-105">
+                {auth.authenticated ? <SessionDisplay name={auth.user?.Name}/>:
+
+									<Link
+									to={"/login"}
+									className="h-full flex items-center justify-center hover:scale-105">
                     <IconUserCircle color="black" size={"32px"} />
                 </Link>
+										}
 
             </div>
 

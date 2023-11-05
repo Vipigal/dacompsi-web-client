@@ -11,8 +11,6 @@ import Loja from "../pages/Loja.tsx";
 import Eventos from "../pages/Eventos.tsx";
 import Quemsomos from "../pages/Quemsomos.tsx";
 
-
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,24 +34,24 @@ const router = createBrowserRouter([
       },
       {
         path: "/produto",
-        element: <Produto />
+        element: <Produto />,
       },
       {
         path: "/meuspedidos",
-        element: <Meuspedidos />
+        element: <Meuspedidos />,
       },
       {
         path: "/loja",
-        element: <Loja />
+        element: <Loja />,
       },
       {
         path: "/eventos",
-        element: <Eventos />
-      },            
+        element: <Eventos />,
+      },
       {
         path: "/quemsomos",
-        element: <Quemsomos />
-      },            
+        element: <Quemsomos />,
+      },
     ],
   },
   {

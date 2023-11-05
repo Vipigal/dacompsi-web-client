@@ -18,7 +18,7 @@ const BuyProduct = () => {
         
         <div className="flex-1 p-10">
           
-          <div className="font-bold text-2xl mb-6 ml-20">PRODUTO</div>
+          <div className="font-bold text-2xl text-black mb-6 ml-20">PRODUTO</div>
           
           <div className="grid md:grid-cols-2 gap-10">
             

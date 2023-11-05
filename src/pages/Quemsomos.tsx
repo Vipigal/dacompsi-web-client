@@ -12,15 +12,15 @@ const QuemSomos = () => {
         <div className="container mx-auto p-8">
             <h1 className="text-3xl font-bold text-center mb-6">Quem Somos</h1>
             <section className="mb-8">
-                <h2 className="text-2xl font-semibold mb-4">Missao</h2>
+                <h2 className="text-2xl text-black font-semibold mb-4">Missao</h2>
                 <p className="text-lg">{missao}</p>
             </section>
             <section className="mb-8">
-                <h2 className="text-2xl font-semibold mb-4">Historia</h2>
+                <h2 className="text-2xl text-black font-semibold mb-4">Historia</h2>
                 <p className="text-lg">{historia}</p>
             </section>
             <section className="mb-8">
-                <h2 className="text-2xl font-semibold mb-4">Time</h2>
+                <h2 className="text-2xl text-black font-semibold mb-4">Time</h2>
                 <p className="text-lg">{time}</p>
             </section>
         </div>
