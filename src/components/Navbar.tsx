@@ -29,7 +29,7 @@ export const Navbar = () => {
             const sidePanel = document.querySelector('.side-panel-container');
             if (navbarRef.current && sidePanel) {
                 const navbarBottomY = navbarRef.current.getBoundingClientRect().bottom;
-                sidePanel.classList.add(`top-[${navbarBottomY}px]`);
+                sidePanel.style.top = `${navbarBottomY}px`
             }
         };
     

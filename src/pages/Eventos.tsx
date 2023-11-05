@@ -1,4 +1,3 @@
-import React from 'react';
 import EventCard from '../components/EventCard'; 
 import "../assets/css/eventos.css"
 import BannerURL from "../assets/images/computariabanner.png"
@@ -45,7 +44,7 @@ const Eventos = () => {
       </section>
       <section>
         <h2 className="text-xl font-semibold mb-4 text-center">Eventos Realizados:</h2>
-        <div className="flex justify-start gap-4 justify-center self-center items-center mx-auto">
+        <div className="flex gap-4 justify-center self-center items-center mx-auto">
           {completedEvents.map(event => (
             <EventCard key={event.id} name={event.name} imageUrl={event.imageUrl} />
           ))}
