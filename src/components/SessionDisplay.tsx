@@ -24,7 +24,8 @@ function SessionDisplay({name}: ISessionDisplay) {
 					title: 'Erro',
 					message: 'Um problema ocorreu ao deslogar do sistema. Favor tentar novamente.',
 					color: 'red',
-				icon: <IconX/>			})
+					icon: <IconX/>
+				})
 			}
 		}catch(e){
 			console.log(e);
@@ -42,12 +43,12 @@ function SessionDisplay({name}: ISessionDisplay) {
 			</Menu.Target>
 			<Menu.Dropdown>
 			<Menu.Item  leftSection={<IconLogout color="red" />} onClick={(e)=>handleLogout(e)}>
-				
 				<span>Logout</span>
 			</Menu.Item>
 			</Menu.Dropdown>
 		</Menu>
 	)
+
 }
 
 export default SessionDisplay

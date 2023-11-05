@@ -13,7 +13,7 @@ const LOGO_HEIGHT = 150;
 
 export const Navbar = () => {
 
-		const auth = useAuth()
+	const auth = useAuth()
 
     const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
 
@@ -26,7 +26,7 @@ export const Navbar = () => {
     useEffect(() => {
 
         const updateSidePanelTop = () => {
-            const sidePanel = document.querySelector('.side-panel-container');
+            const sidePanel = document.querySelector('.side-panel-container') as HTMLElement;
             if (navbarRef.current && sidePanel) {
                 const navbarBottomY = navbarRef.current.getBoundingClientRect().bottom;
                 sidePanel.style.top = `${navbarBottomY}px`
@@ -48,24 +48,25 @@ export const Navbar = () => {
             setIsSidePanelOpen(false);
         };
     
-        // Attach event listeners
         window.addEventListener('resize', updateSidePanelTop);
         document.addEventListener('click', handleClosePanel);
     
-        // Clean up event listeners
         return () => {
             window.removeEventListener('resize', updateSidePanelTop);
             document.removeEventListener('click', handleClosePanel);
             document.body.style.overflow = '';
         };
-    }, [isSidePanelOpen]); // Add other dependencies if necessary
+    }, [isSidePanelOpen]);
     
+    
+    // auth.authenticated = true; // teste
     
 
     return (
 
         <nav ref={navbarRef} className="bg-red-dacompsi w-full flex items-center justify-between p-3 pb-3 pr-12 pl-12 h-full">
 
+            {auth.authenticated && (
             <button className="border-none rounded-full bg-red-dacompsi py-1 px-1 self-center">
                 <FaBars
                     size={24}
@@ -73,6 +74,8 @@ export const Navbar = () => {
                     className="hamburger"
                 />
             </button>
+            )}
+            
 
             <div className="flex items-center">
                 <Link to="/home">
@@ -81,7 +84,7 @@ export const Navbar = () => {
                         alt="logo dacompsi"
                         width={RAZAO_LOGO * LOGO_HEIGHT}
                         height={LOGO_HEIGHT}
-                        className="sm:ml-60"
+                        className={auth.authenticated ? 'sm:ml-60' : ''}
                     />
                 </Link>
             </div>
@@ -105,18 +108,19 @@ export const Navbar = () => {
                         Peça Ajuda
                     </span>
                 </a>
+
                 {auth.authenticated ? <SessionDisplay name={auth.user?.Name}/>:
 
-									<Link
-									to={"/login"}
-									className="h-full flex items-center justify-center hover:scale-105">
-                    <IconUserCircle color="black" size={"32px"} />
-                </Link>
-										}
+                    <Link to={"/login"} className="h-full flex items-center justify-center hover:scale-105">
+                        <IconUserCircle color="black" size={"32px"} />
+                    </Link>
+                
+                }
 
             </div>
 
-            {isSidePanelOpen && (
+
+            {auth.authenticated && isSidePanelOpen &&  (
                 <div className="side-panel-container">
                     <div className="side-panel">
                     <Link to="/home" onClick={toggleSidePanel}>
