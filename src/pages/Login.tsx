@@ -4,7 +4,7 @@ import logo_dacompsi from "../assets/images/dacompsi_logo_branca.png";
 import { useContext, useEffect, useState } from "react";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 import { Link, useNavigate } from "react-router-dom";
-import { TextInput } from "@mantine/core";
+import { Loader, TextInput } from "@mantine/core";
 import Button from "../components/Button";
 import { IconX } from "@tabler/icons-react";
 import { AuthContext } from "../contexts/AuthContext";
@@ -28,6 +28,7 @@ export interface JwtPayloadUser extends JwtPayload {
 const Login = () => {
   const [formFields, setFormFields] = useState(initialFormFieldsLogin);
   const [errorLogin, setErrorLogin] = useState("");
+	const [loading, setLoading] = useState(false)
 
   const { setAuthenticated, setUser } = useContext(AuthContext);
 
@@ -39,6 +40,7 @@ const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+		setLoading(true);
 
     const body = {
       email: formFields.login,
@@ -70,11 +72,13 @@ const Login = () => {
       } else {
         setErrorLogin("Usuário e/ou Senha inválidos");
       }
+			setLoading(false)
     } catch (e) {
       console.log(e);
       setErrorLogin(
         "Ocorreu um erro misterioso. Por favor, tente novamente mais tarde"
       );
+			setLoading(false)
     }
   };
 
@@ -96,12 +100,12 @@ const Login = () => {
       </div>
       <form
         onSubmit={(e) => handleSubmit(e)}
-        className="bg-gray-complementary flex flex-col gap-10 items-center justify-center max-w-xl pb-28 px-5 pt-32 self-center justify-self-center min-h-min rounded-3xl shadow-xl relative"
+        className={`bg-gray-complementary flex flex-col gap-10 items-center justify-center max-w-xl pb-28 px-5 ${errorLogin ? 'pt-20': 'pt-32'} self-center justify-self-center min-h-min rounded-3xl shadow-xl`}
       >
         {errorLogin && (
-          <div className="bg-red-400 border border-red-600 p-5 absolute top-10 rounded-md w-11/12 flex items-center justify-center">
+          <div className="bg-red-400 border border-red-dacompsi text-center p-5 rounded-md w-full flex items-center justify-center relative">
             <IconX
-              className="absolute top-2 right-2 cursor-pointer"
+              className="absolute top-1 right-1 cursor-pointer"
               onClick={() => setErrorLogin("")}
               size={20}
             />
@@ -142,9 +146,11 @@ const Login = () => {
           className="w-full"
           type="password"
         />
-        <Button className="w-full rounded-md" variant="default" type="submit">
+				{loading ? <Loader color="red"/> :
+        <Button className="w-full rounded-md" variant="default" type="submit" >
           Login
         </Button>
+				}
       </form>
     </Container>
   );

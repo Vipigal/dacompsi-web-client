@@ -35,7 +35,7 @@ const Meuspedidos = () => {
     return (
         <Container>
         <div className="p-10">
-            <h1 className="text-2xl font-bold mb-6">Meus Pedidos</h1>
+            <h1 className="text-2xl font-bold mb-6 text-black">Meus Pedidos</h1>
             {purchasedProducts.map(product => (
             <ProductCard
                 key={product.id}

@@ -1,7 +1,6 @@
 import Container from "../components/Container";
 import fotoSobreDa from "../assets/images/image_14.svg";
 import bannerPicture from "../assets/images/banner.png";
-import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import AvatarBox from "../components/AvatarBox";
 import collaboration from "../assets/images/collaboration.svg";
 import { useMediaQuery } from "@mantine/hooks";
@@ -9,6 +8,8 @@ import { em } from "@mantine/core";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import BannerCarousel from "../components/BannerCarousel";
+import { Carousel } from "@mantine/carousel";
 
 const COLLABORATION_PIC_RAZAO = 1.725;
 let collaboration_pic_height = 100;
@@ -23,15 +24,12 @@ const Home = () => {
   return (
     <Container className="gap-10">
       <div className="h-60 bg-gray-500 relative mx-10 text-white">
-        <IconChevronLeft
-          color="white"
-          className="absolute left-0 top-1/2 transform -translate-y-1/2"
-        />
-        <img src={bannerPicture} alt="banner" className="w-full h-full" />
-        <IconChevronRight
-          color="white"
-          className="absolute right-0 top-1/2 transform -translate-y-1/2"
-        />
+				<BannerCarousel>
+					<Carousel.Slide className="w-full">
+
+			<img src={bannerPicture} alt="banner" className="w-full h-full" />
+					</Carousel.Slide>
+				</BannerCarousel>
       </div>
 
       <div
@@ -77,7 +75,7 @@ const Home = () => {
         id="gestao"
       >
         <div className="flex flex-col gap-5 text-white px-16 pt-10 justify-center items-center">
-          <span className="font-bold mt-6 md:text-[38px] text-2xl text-center">
+          <span className="font-bold mt-6 md:text-[38px] text-2xl text-center text-white">
             Conheça nossa gestão
           </span>
           <span className="text-sm sm:text-base">

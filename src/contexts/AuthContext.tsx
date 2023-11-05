@@ -38,9 +38,10 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
         if (response && response.data) {
           const jwt = jwtDecode(response.data) as JwtPayloadUser;
           setUser(jwt.user);
+					setAuthenticated(true)
         }
       } catch (e) {
-        console.log(e);
+				setAuthenticated(false)
       }
     };
     validateToken();
@@ -54,5 +55,7 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
+
 
 export { AuthContext, AuthProvider };

@@ -33,10 +33,10 @@ const completedEvents = [
 const Eventos = () => {
   return (
     <div className="container mt-4">
-      <h1 className="text-2xl font-bold mb-6 text-center">Gerenciamento de Eventos</h1>
+      <h1 className="text-2xl font-bold mb-6 text-center text-black">Gerenciamento de Eventos</h1>
       <section>
         <h2 className="text-xl font-semibold mb-4 text-center">Eventos Ativos:</h2>
-        <div className="flex justify-start gap-4 mb-6 justify-center self-center items-center mx-auto">
+        <div className="flex  gap-4 mb-6 justify-center self-center items-center mx-auto">
           {activeEvents.map(event => (
             <EventCard key={event.id} name={event.name} imageUrl={event.imageUrl} />
           ))}
