@@ -6,10 +6,12 @@ import collaboration from "../assets/images/collaboration.svg";
 import { useMediaQuery } from "@mantine/hooks";
 import { em } from "@mantine/core";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import BannerCarousel from "../components/BannerCarousel";
 import { Carousel } from "@mantine/carousel";
+import { IconPencil } from "@tabler/icons-react";
+import ModalCadastroPost from "../components/ModalCadastroPost";
 
 const COLLABORATION_PIC_RAZAO = 1.725;
 let collaboration_pic_height = 100;
@@ -21,15 +23,30 @@ const Home = () => {
   //com isso conseguimos usar informacoes do usuario caso esteja logado
   const { user } = useContext(AuthContext);
 
+  const canUpdate = () => {
+    return user?.userType === "ADMIN";
+  };
+
+  const [openedModalBanner, setOpenedModalBanner] = useState(false);
+  const [openedModalSobre, setOpenedModalSobre] = useState(false);
+  const [openedModalGestao, setOpenedModalGestao] = useState(false);
+  const [openedModalTicket, setOpenedModalTicket] = useState(false);
+
   return (
     <Container className="gap-10">
       <div className="h-60 bg-gray-500 relative mx-10 text-white">
-				<BannerCarousel>
-					<Carousel.Slide className="w-full">
-
-			<img src={bannerPicture} alt="banner" className="w-full h-full" />
-					</Carousel.Slide>
-				</BannerCarousel>
+        <BannerCarousel className="relative">
+          <Carousel.Slide className="w-full">
+            <img src={bannerPicture} alt="banner" className="w-full h-full" />
+            {canUpdate() && (
+              <IconPencil
+                color="orange"
+                className="absolute top-1 right-5 cursor-pointer hover:scale-125"
+                onClick={() => setOpenedModalBanner(true)}
+              />
+            )}
+          </Carousel.Slide>
+        </BannerCarousel>
       </div>
 
       <div
@@ -37,8 +54,15 @@ const Home = () => {
         id="da"
       >
         <div className="flex flex-col gap-16 max-w-lg ">
-          <span className="font-bold self-center text-[38px] text-center">
+          <span className="font-bold self-center text-[38px] text-center flex items-center justify-center gap-2">
             O QUE É O D.A.?
+            {canUpdate() && (
+              <IconPencil
+                color="orange"
+                className="cursor-pointer hover:scale-125 "
+                onClick={() => setOpenedModalSobre(true)}
+              />
+            )}
           </span>
           <span>
             O Diretório Acadêmico de Ciência da Computação e Sistemas de
@@ -75,8 +99,15 @@ const Home = () => {
         id="gestao"
       >
         <div className="flex flex-col gap-5 text-white px-16 pt-10 justify-center items-center">
-          <span className="font-bold mt-6 md:text-[38px] text-2xl text-center text-white">
+          <span className="font-bold mt-6 md:text-[38px] text-2xl text-center text-white flex items-center justify-center gap-2">
             Conheça nossa gestão
+            {canUpdate() && (
+              <IconPencil
+                color="orange"
+                className="cursor-pointer hover:scale-125 "
+                onClick={() => setOpenedModalGestao(true)}
+              />
+            )}
           </span>
           <span className="text-sm sm:text-base">
             Esses são os membros dos Colegiados de Ciência da Computação e
@@ -99,15 +130,22 @@ const Home = () => {
         id="ajuda"
       >
         <div className="flex flex-col gap-16 max-w-[558px] items-center">
-          <span className="font-bold md:text-[38px] text-2xl text-center">
+          <span className="font-bold md:text-[38px] text-2xl text-center flex justify-center items-center">
             Peça ajuda a um Representante
+            {canUpdate() && (
+              <IconPencil
+                color="orange"
+                className="cursor-pointer hover:scale-125 "
+                onClick={() => setOpenedModalTicket(true)}
+              />
+            )}
           </span>
           <span className="w-[300px] md:min-w-[550px]">
             Ocorreu um problema com sua matrícula? Precisa de orientação para
-            tomar uma decisão? Sem problema! Nós do DACompSI estamos aqui para
-            te ajudar! Entre em contato com nossos representantes discentes o
-            mais rápido possível e explique o seu caso! Estaremos mobilizados
-            para te ajudar.
+            tomar uma decisão importante? Não esquenta! Nós do DACompSI estamos
+            aqui para te ajudar. Entre em contato com nossos representantes
+            discentes e explique o seu caso, estaremos mobilizados para te
+            atender o mais rápido possível.
           </span>
 
           <Link to="/help">
@@ -123,6 +161,26 @@ const Home = () => {
           height={collaboration_pic_height}
         />
       </div>
+      <ModalCadastroPost
+        onClose={() => setOpenedModalBanner(false)}
+        opened={openedModalBanner}
+        title="Editar Banner"
+      />
+      <ModalCadastroPost
+        onClose={() => setOpenedModalGestao(false)}
+        opened={openedModalGestao}
+        title="Editar Seção sobre a Gestão"
+      />
+      <ModalCadastroPost
+        onClose={() => setOpenedModalSobre(false)}
+        opened={openedModalSobre}
+        title="Editar Seção sobre o D.A."
+      />
+      <ModalCadastroPost
+        onClose={() => setOpenedModalTicket(false)}
+        opened={openedModalTicket}
+        title="Editar Seção de Ticket"
+      />
     </Container>
   );
 };

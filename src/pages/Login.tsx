@@ -28,9 +28,9 @@ export interface JwtPayloadUser extends JwtPayload {
 const Login = () => {
   const [formFields, setFormFields] = useState(initialFormFieldsLogin);
   const [errorLogin, setErrorLogin] = useState("");
-	const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
-  const { setAuthenticated, setUser } = useContext(AuthContext);
+  const { setAuthenticated, setUser, authenticated } = useContext(AuthContext);
 
   if (import.meta.env.PROD) {
     disableReactDevTools();
@@ -38,9 +38,15 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (authenticated) {
+      navigate("/");
+    }
+  }, [authenticated, navigate]);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-		setLoading(true);
+    setLoading(true);
 
     const body = {
       email: formFields.login,
@@ -72,13 +78,13 @@ const Login = () => {
       } else {
         setErrorLogin("Usuário e/ou Senha inválidos");
       }
-			setLoading(false)
+      setLoading(false);
     } catch (e) {
       console.log(e);
       setErrorLogin(
         "Ocorreu um erro misterioso. Por favor, tente novamente mais tarde"
       );
-			setLoading(false)
+      setLoading(false);
     }
   };
 
@@ -100,7 +106,9 @@ const Login = () => {
       </div>
       <form
         onSubmit={(e) => handleSubmit(e)}
-        className={`bg-gray-complementary flex flex-col gap-10 items-center justify-center max-w-xl pb-28 px-5 ${errorLogin ? 'pt-20': 'pt-32'} self-center justify-self-center min-h-min rounded-3xl shadow-xl`}
+        className={`bg-gray-complementary flex flex-col gap-10 items-center justify-center max-w-xl pb-28 px-5 ${
+          errorLogin ? "pt-20" : "pt-32"
+        } self-center justify-self-center min-h-min rounded-3xl shadow-xl`}
       >
         {errorLogin && (
           <div className="bg-red-400 border border-red-dacompsi text-center p-5 rounded-md w-full flex items-center justify-center relative">
@@ -146,11 +154,13 @@ const Login = () => {
           className="w-full"
           type="password"
         />
-				{loading ? <Loader color="red"/> :
-        <Button className="w-full rounded-md" variant="default" type="submit" >
-          Login
-        </Button>
-				}
+        {loading ? (
+          <Loader color="red" />
+        ) : (
+          <Button className="w-full rounded-md" variant="default" type="submit">
+            Login
+          </Button>
+        )}
       </form>
     </Container>
   );
