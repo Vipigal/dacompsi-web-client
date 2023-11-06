@@ -1,5 +1,5 @@
 import Container from "../components/Container";
-import fotoSobreDa from "../assets/images/image_14.svg";
+import fotoSobreDa from "../assets/images/dacomsi_sala.png";
 import bannerPicture from "../assets/images/banner.png";
 import AvatarBox from "../components/AvatarBox";
 import collaboration from "../assets/images/collaboration.svg";
