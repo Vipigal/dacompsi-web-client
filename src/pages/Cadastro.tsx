@@ -6,6 +6,7 @@ import { LogoDacompsiSizes } from "../utils/LogoSizes";
 import { Loader, TextInput } from "@mantine/core";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { IconX } from "@tabler/icons-react";
 
 interface CadastroForm {
   login: string;
@@ -23,6 +24,7 @@ const initialFormFieldsCadastro: CadastroForm = {
 
 const Cadastro = () => {
   const [formFields, setFormFields] = useState(initialFormFieldsCadastro);
+  const [errorLogin, setErrorLogin] = useState("");
   const [loading, setLoading] = useState(false);
 
   if (import.meta.env.PROD) {
@@ -59,11 +61,12 @@ const Cadastro = () => {
         console.error("Cadastro deu certo!");
         window.location.assign("/login");
       } else {
+        setErrorLogin(cadastroResJson);
         console.error("Erro durante cadastro");
       }
     } catch (e) {
       console.log(e);
-      console.error(
+      setErrorLogin(
         "Ocorreu um erro misterioso. Por favor, tente novamente mais tarde"
       );
     }
@@ -86,6 +89,17 @@ const Cadastro = () => {
         onSubmit={handleSubmit}
         className="bg-gray-complementary flex flex-col gap-10 items-center justify-center max-w-xl pb-28 px-5 pt-32 self-center justify-self-center min-h-min rounded-3xl shadow-xl"
       >
+        {errorLogin && (
+          <div className="bg-red-300 border border-red-dacompsi text-center p-5 rounded-md w-full flex items-center justify-center relative">
+            <IconX
+              className="absolute top-1 right-1 cursor-pointer"
+              onClick={() => setErrorLogin("")}
+              size={20}
+            />
+
+            {errorLogin}
+          </div>
+        )}
         <div className="flex gap-5">
           <div className="flex flex-col justify-center items-center">
             <span className="text-black text-5xl font-bold">Inscreva-se</span>

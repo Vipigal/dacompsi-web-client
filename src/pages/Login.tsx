@@ -111,7 +111,7 @@ const Login = () => {
         } self-center justify-self-center min-h-min rounded-3xl shadow-xl`}
       >
         {errorLogin && (
-          <div className="bg-red-400 border border-red-dacompsi text-center p-5 rounded-md w-full flex items-center justify-center relative">
+          <div className="bg-red-300 border border-red-dacompsi text-center p-5 rounded-md w-full flex items-center justify-center relative">
             <IconX
               className="absolute top-1 right-1 cursor-pointer"
               onClick={() => setErrorLogin("")}
