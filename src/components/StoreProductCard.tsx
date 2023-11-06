@@ -122,7 +122,7 @@ const StoreProductCard: React.FC<StoreProductCardProps> = ({
               <span className="font-bold text-lg">Disponibilidade:</span>{" "}
               <span>
                 {isProductAvailable
-                  ? amount
+                  ? amount + " Unidades"
                   : "Indisponível (Mas você pode registrar interesse neste produto para ser incluido na loja mais rápido!)"}
               </span>
             </div>
@@ -133,6 +133,7 @@ const StoreProductCard: React.FC<StoreProductCardProps> = ({
                 min={0}
                 value={selectedAmount}
                 onChange={(e) => setSelectedAmount(Number(e))}
+                max={isProductAvailable ? amount : undefined}
               />
               <Button
                 variant="default"
