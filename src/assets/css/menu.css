@@ -1,7 +1,6 @@
 .hamburger {
   cursor: pointer;
 }
-
 .side-panel-container {
   position: fixed;
   top: 0;
@@ -10,29 +9,37 @@
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5); 
   z-index: 999;
+  opacity: 0;
+  visibility: hidden; 
+  transition: opacity 0.35s ease, visibility 0.35s ease; 
 }
-
 .side-panel {
   width: 300px;
   height: 100vh;
-  background-color: white; /* #D2C6C6 <- essa eh a cor no figma */
+  background-color: white; 
   overflow-y: auto;
   padding: 2em;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   gap: 1em;
-  /*margin-top: 85px;*/ 
+  transform: translateX(-100%); 
+  transition: transform 0.35s ease; 
 }
-
+.side-panel-container.open {
+  opacity: 1;
+  visibility: visible;
+}
 .side-panel a {
   display: block;
   color: #990100; 
   text-decoration: none;
   font-size: 1.2em;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.35s ease;
 }
-
 .side-panel a:hover {
   opacity: 0.7;
+}
+.side-panel.open {
+  transform: translateX(0); 
 }
