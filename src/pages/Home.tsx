@@ -165,6 +165,7 @@ const Home = () => {
         onClose={() => setOpenedModalBanner(false)}
         opened={openedModalBanner}
         title="Editar Banner"
+        variant="BANNER"
       />
       <ModalCadastroPost
         onClose={() => setOpenedModalGestao(false)}
