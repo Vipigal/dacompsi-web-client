@@ -67,7 +67,7 @@ export const Navbar = () => {
     };
   }, [isSidePanelOpen]);
 
-  // auth.authenticated = true; // teste
+  // auth.authenticated = false; // teste
 
   return (
     <nav
@@ -130,9 +130,8 @@ export const Navbar = () => {
         )}
       </div>
 
-      {auth.authenticated && isSidePanelOpen && (
-        <div className="side-panel-container">
-          <div className="side-panel">
+        <div className={`side-panel-container ${isSidePanelOpen && auth.authenticated ? "open" : ""}`}>
+          <div className={`side-panel ${isSidePanelOpen && auth.authenticated ? "open" : ""}`}>
             <Link to="/home" onClick={toggleSidePanel}>
               <div className="flex gap-1 items-center">
                 <IconHome />
@@ -167,7 +166,7 @@ export const Navbar = () => {
             <Divider
               color="black"
               orientation="horizontal"
-              className="mt-[450px]"
+              className="mt-[280px]"
             />
             <Link to="/meuspedidos" onClick={toggleSidePanel}>
               <div className="flex gap-1 items-center">
@@ -183,7 +182,6 @@ export const Navbar = () => {
             </Link>
           </div>
         </div>
-      )}
     </nav>
   );
 };
