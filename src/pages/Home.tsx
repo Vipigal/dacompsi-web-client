@@ -38,7 +38,34 @@ const Home = () => {
   const [sobreContent, setSobreContent] = useState(null);
   const [ajudaContent, setAjudaContent] = useState(null);
   
+  /* fallback/default pro banner */
   const [imageSrc, setImageSrc] = useState(bannerPicture); 
+
+  /* fallback/default pro sobre */
+  const [imageSrcSobre, setImageSrcSobre] = useState(fotoSobreDa);
+  const [titleSobre, setTitleSobre] = useState('O QUE É O D.A.?');
+  const [descriptionSobre, setDescriptionSobre] = useState('O Diretório Acadêmico de Ciência da Computação e Sistemas de Informação da UFMG (DACompSI) é a entidade estudantil que representa os estudantes de graduação e pós graduação em Ciência da Computação e Sistemas de informação. Coordenado por uma diretoria constituída (e eleita) por alunos dos cursos relacionados, tem como alguns de seus objetivos: Representar os interesses do corpo discente (alunos) perante os órgãos do DCC (Colegiados e Câmara); Promover atividades integradoras entre os alunos; Incentivar práticas de aprimoramento do conhecimento dos estudantes;');
+
+  /* fallback/default pro ajuda */
+  const [imageSrcAjuda, setImageSrcAjuda] = useState(collaboration);
+  const [titleAjuda, setTitleAjuda] = useState('Peça ajuda a um Representante');
+  const [descriptionAjuda, setDescriptionAjuda] = useState('Ocorreu um problema com sua matrícula? Precisa de orientação para tomar uma decisão importante? Não esquenta! Nós do DACompSI estamos aqui para te ajudar. Entre em contato com nossos representantes discentes e explique o seu caso, estaremos mobilizados para te atender o mais rápido possível.');
+
+  useEffect(() => {
+    if (sobreContent) {
+      setImageSrcSobre(sobreContent.imageURL);
+      setTitleSobre(sobreContent.title);
+      setDescriptionSobre(sobreContent.description);
+    }
+  }, [sobreContent]);
+  
+  useEffect(() => {
+    if (ajudaContent) {
+      setImageSrcAjuda(ajudaContent.imageURL);
+      setTitleAjuda(ajudaContent.title);
+      setDescriptionAjuda(ajudaContent.description);
+    }
+  }, [ajudaContent]);  
   
   useEffect(() => {
     if (bannerContent && bannerContent.imageURL) {
@@ -120,29 +147,28 @@ const Home = () => {
         </BannerCarousel>
       </div>
 
-      {sobreContent && (
-        <div className="mx-10 flex flex-col md:flex-row p-5 items-center justify-center gap-6 md:gap-48" id="da" >
-          <div className="flex flex-col gap-16 max-w-lg ">
-            <span className="font-bold self-center text-[38px] text-center flex items-center justify-center gap-2">
-              {sobreContent.title}
-              {canUpdate() && ( 
-                <IconPencil color="orange" className="cursor-pointer hover:scale-125 " onClick={() => setOpenedModalSobre(true)} />
-              )}
-            </span>
-            <span>
-              {sobreContent.description}
-            </span>
-          </div>
-          <div className="flex flex-col gap-4">
-            <img src={sobreContent.imageURL} />
-            <a className="flex flex-col gap-4" href="/quemsomos">
-              <button className="rounded-full bg-red-dacompsi hover:bg-red-900 text-white w-[140px] py-1 self-center">
-                SAIBA MAIS
-              </button>
-            </a>
-          </div>
+      <div className="mx-10 flex flex-col md:flex-row p-5 items-center justify-center gap-6 md:gap-48" id="da" >
+        <div className="flex flex-col gap-16 max-w-lg ">
+          <span className="font-bold self-center text-[38px] text-center flex items-center justify-center gap-2">
+            {titleSobre}
+            {canUpdate() && ( 
+              <IconPencil color="orange" className="cursor-pointer hover:scale-125 " onClick={() => setOpenedModalSobre(true)} />
+            )}
+          </span>
+          <span>
+            {descriptionSobre}
+          </span>
         </div>
-      )}
+        <div className="flex flex-col gap-4">
+          <img src={imageSrcSobre} alt="Sobre" />
+          <a className="flex flex-col gap-4" href="/quemsomos">
+            <button className="rounded-full bg-red-dacompsi hover:bg-red-900 text-white w-[140px] py-1 self-center">
+              SAIBA MAIS
+            </button>
+          </a>
+        </div>
+      </div>
+
 
       <div className="bg-gradient-to-b from-red-dacompsi to-dark-red-dacompsi h-[800px]" id="gestao">
         <div className="flex flex-col gap-5 text-white px-16 pt-10 justify-center items-center">
@@ -172,35 +198,34 @@ const Home = () => {
         </div>
       </div>
 
-      {ajudaContent && (
-        <div className="h-[550px] md:mx-40 p-10 flex flex-col md:flex-row justify-center md:gap-48 gap-12 items-center" id="ajuda" >
-          <div className="flex flex-col gap-16 max-w-[558px] items-center">
-            <span className="font-bold md:text-[38px] text-2xl text-center flex justify-center items-center">
-              {ajudaContent.title}
-              {canUpdate() && (
-                <IconPencil
-                  color="orange"
-                  className="cursor-pointer hover:scale-125 "
-                  onClick={() => setOpenedModalTicket(true)}
-                />
-              )}
-            </span>
-            <span className="w-[300px] md:min-w-[550px]">
-              {ajudaContent.description}
-            </span>
-            <Link to="/help">
-              <button className="rounded-full bg-red-dacompsi hover:bg-red-900 text-white w-[240px] py-2 self-center ">
-                PEDIR AJUDA
-              </button>
-            </Link>
-          </div>
-          <img
-            src={ajudaContent.imageURL}
-            width={collaboration_pic_height * COLLABORATION_PIC_RAZAO}
-            height={collaboration_pic_height}
-          />
+      <div className="h-[550px] md:mx-40 p-10 flex flex-col md:flex-row justify-center md:gap-48 gap-12 items-center" id="ajuda" >
+        <div className="flex flex-col gap-16 max-w-[558px] items-center">
+          <span className="font-bold md:text-[38px] text-2xl text-center flex justify-center items-center">
+            {titleAjuda}
+            {canUpdate() && (
+              <IconPencil
+                color="orange"
+                className="cursor-pointer hover:scale-125 "
+                onClick={() => setOpenedModalTicket(true)}
+              />
+            )}
+          </span>
+          <span className="w-[300px] md:min-w-[550px]">
+            {descriptionAjuda}
+          </span>
+          <Link to="/help">
+            <button className="rounded-full bg-red-dacompsi hover:bg-red-900 text-white w-[240px] py-2 self-center ">
+              PEDIR AJUDA
+            </button>
+          </Link>
         </div>
-      )}
+        <img
+          src={imageSrcAjuda}
+          alt="Ajuda"
+          width={collaboration_pic_height * COLLABORATION_PIC_RAZAO}
+          height={collaboration_pic_height}
+        />
+      </div>
 
       <ModalCadastroPost
         onClose={() => setOpenedModalBanner(false)}
