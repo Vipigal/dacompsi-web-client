@@ -40,6 +40,7 @@ const Cadastro = () => {
       name: formFields.userName,
       password: formFields.password,
       userType: "ALUNO",
+      // userType: "ADMIN",
     };
 
     try {

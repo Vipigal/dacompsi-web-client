@@ -22,6 +22,7 @@ const StoreProductCard: React.FC<StoreProductCardProps> = ({
   amount,
   description,
 }) => {
+  
   // const discountPercentage = originalPrice
   //   ? Math.round(((originalPrice - price) / originalPrice) * 100)
   //   : 0;
@@ -30,6 +31,43 @@ const StoreProductCard: React.FC<StoreProductCardProps> = ({
   const [openedDetailModal, setOpenedDetailModal] = useState(false);
   const [selectedAmount, setSelectedAmount] = useState(1);
   const isProductAvailable = amount !== 0;
+
+  const handleCreateOrder = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    if (!isProductAvailable) return;
+  
+    try {
+      const orderData = {
+        productName: name,
+        amount: selectedAmount,
+      };
+      const response = await api.post("/orders", orderData, { withCredentials: true });
+      if (response.status === 200) {
+        showNotification({
+          title: "Ordem feita com sucesso",
+          message: "Sua ordem foi realiazada com sucesso.",
+          color: "green",
+          icon: <IconCheck />,
+        });
+      } else {
+        showNotification({
+          title: "Erro: Ordem não foi realizad",
+          message: "Houve um erro com sua ordem. Tente novamente.",
+          color: "red",
+          icon: <IconX />,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      showNotification({
+        title: "Erro misterioso",
+        message: (error as Error).message,
+        color: "red",
+        icon: <IconX />,
+      });
+    }
+  };
+
 
   const handleWishProduct = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -138,12 +176,8 @@ const StoreProductCard: React.FC<StoreProductCardProps> = ({
               <Button
                 variant="default"
                 className="self-end py-[5px]"
-                onClick={(e) =>
-                  isProductAvailable
-                    ? console.log("SEM COMPRA AINDA AMIGAO")
-                    : handleWishProduct(e)
-                }
-              >
+                onClick={isProductAvailable ? handleCreateOrder : handleWishProduct}
+                >
                 {isProductAvailable ? "COMPRAR" : "TENHO INTERESSE"}
               </Button>
             </div>
