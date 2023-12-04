@@ -39,11 +39,11 @@ const Cadastro = () => {
       contactNumber: formFields.contactNumber,
       name: formFields.userName,
       password: formFields.password,
-      userType: "ADMIN",
+      userType: "ALUNO",
+      // userType: "ADMIN",
     };
 
     try {
-      console.log("URL " + `${import.meta.env.VITE_API_URL}/api/users`)
       const cadastroRes = await fetch(
         `${import.meta.env.VITE_API_URL}/api/users`,
         {
