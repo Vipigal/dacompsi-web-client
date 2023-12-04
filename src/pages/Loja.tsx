@@ -6,8 +6,6 @@ import { showNotification } from "@mantine/notifications";
 import { Product } from "../interfaces/Product";
 import { Loader } from "@mantine/core";
 
-// produtos exemplo
-
 const Loja = () => {
   const [view, setView] = useState("grid");
   const [sortOption, setSortOption] = useState("relevance");
@@ -40,9 +38,7 @@ const Loja = () => {
 
   const filteredProducts = productsData; // todo - botar logica filtragem
 
-  return isLoading ? (
-    <Loader color="red" />
-  ) : (
+  return isLoading ? ( <Loader color="red" /> ) : (
     <div className="container px-8 mt-4">
       <div className="flex">
         <aside className="w-1/4 px-4 py-6">
@@ -67,11 +63,7 @@ const Loja = () => {
               <div>{filteredProducts?.length} Produtos</div>
               <div>
                 <label htmlFor="sort">Sort by: </label>
-                <select
-                  id="sort"
-                  value={sortOption}
-                  onChange={(e) => setSortOption(e.target.value)}
-                >
+                <select id="sort" value={sortOption} onChange={(e) => setSortOption(e.target.value)} >
                   <option value="relevance">Relevance</option>
                   <option value="priceLowHigh">Price: Low to High</option>
                   <option value="priceHighLow">Price: High to Low</option>
@@ -92,8 +84,7 @@ const Loja = () => {
           </div>
         ) : (
           <span className="flex items-center text-center justify-center font-bold w-full">
-            Ainda não há produtos cadastrados na loja. Volte novamente mais
-            tarde!
+            Ainda não há produtos cadastrados na loja. Volte novamente mais tarde!
           </span>
         )}
       </div>
